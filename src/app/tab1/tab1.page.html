@@ -1,17 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Todo List </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let task of tasks">
+      <ion-checkbox [indeterminate]="true"
+        >Task name: {{task.name}}</ion-checkbox
+      >
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <ion-label>{{ task.name }}</ion-label>
+      <ion-note slot="end">Description for {{ task.description }}</ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

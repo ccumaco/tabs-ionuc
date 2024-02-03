@@ -1,17 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Detalles de Tarea </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label>Tarea:</ion-label>
+    <ion-input
+      [(ngModel)]="selectedTask.name"
+      placeholder="Nombre de la tarea"
+    ></ion-input>
+  </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-item>
+    <ion-label>Descripción:</ion-label>
+    <ion-textarea
+      [(ngModel)]="selectedTask.description"
+      placeholder="Descripción de la tarea"
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Estado:</ion-label>
+    <ion-toggle
+      [(ngModel)]="selectedTask.completed"
+      color="primary"
+    ></ion-toggle>
+  </ion-item>
+
+  <ion-button expand="full" (click)="saveChanges()" id="present-alert"
+    >Save Changes</ion-button
+  >
+  <ion-alert
+    trigger="present-alert"
+    header="Are you sure you want to save the changes?"
+    [buttons]="alertButtons"
+    (didDismiss)="setResult($event)"
+  ></ion-alert>
 </ion-content>
